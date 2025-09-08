@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d947da08549c518e8a34f265a74bd369606c46d485499529c587e7ef9b08f1e8
-size 498
+﻿using DomainLayer;
+using FluentResults;
+using MediatR;
+using Shared;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ApplicationLayer.DepartmentsCqrs.Commands
+{
+    public record CreateDeptCommand (DepartmentDto DeptDto): IRequest<Department>; 
+    public record UpdateDeptCommand (int Id , DepartmentDto DeptDto) : IRequest <bool>;
+
+    public record DeleteDeptCommand (int Id) : IRequest<bool>;
+}
