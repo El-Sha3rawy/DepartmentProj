@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ba037a064ccb70060b3a8dd29da8ce5e98ab3332563b29180ccf897aadeee6b7
-size 724
+﻿using AutoMapper;
+using DomainLayer;
+using Shared;
+using Shared.Proto;
+
+namespace ApplicationLayer.DepartmentsCqrs.Behaviours
+{
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            
+            CreateMap<Department, DepartmentDto>().ReverseMap();
+            CreateMap<CreateDeptRequest, DepartmentDto>();
+            CreateMap<UpdateDeptRequest, DepartmentDto>();
+            CreateMap<DepartmentDto, DeptResponse>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.LastUpdated, opt => opt.Ignore());
+        }
+    }
+}
