@@ -1,3 +1,227 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c4d82c58a3eb3f741a2e6a71c57404758b87c172128235281791501dc1c52a41
-size 7863
+﻿@page "/Department"
+@using Microsoft.Extensions.Localization
+@using Shared.Proto
+@using System.Globalization
+@using TestDept.UI_Validation
+@using Blazored.FluentValidation
+@using Microsoft.AspNetCore.Components.Forms
+@inject DepartmentService.DepartmentServiceClient DeptClient
+@inject IJSRuntime JS
+@inject IStringLocalizer<SharedResource> localizer
+
+<h2 class="text-2xl font-bold mb-4">@localizer["DepartmentsManagement"]</h2>
+
+@if (loading)
+{
+    <p>@localizer["Loading"]...</p>
+}
+else
+{
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <div class="text-red-600 mb-4">@((MarkupString)error)</div>
+    }
+
+    @if (userRole != "Employee")
+    {
+        <EditForm EditContext="editContext" OnValidSubmit="Save">
+            <FluentValidationValidator @ref="fluentValidator" Validator="@(editMode? UpdateValidator() : CreateValidator())" />
+
+            <div class="mb-4 flex flex-col gap-2 w-1/2">
+                <div>
+                    <InputText @bind-Value="deptModel.Name" placeholder="@localizer["Name"]" class="border rounded p-2 w-full" />
+                    <ValidationMessage For="@(() => deptModel.Name)" />
+                </div>
+                <div>
+                    <InputText @bind-Value="deptModel.Manager" placeholder="@localizer["Manager"]" class="border rounded p-2 w-full" />
+                    <ValidationMessage For="@(() => deptModel.Manager)" />
+                </div>
+                <div class="flex gap-2 mt-2">
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" disabled="@isSubmitting">
+                        @(editMode? localizer["EditDept"] : localizer["AddDept"])
+                    </button>
+                    <button type="button" class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500" @onclick="CancelEdit" disabled="@isSubmitting">
+                        @localizer["Cancel"]
+                    </button>
+                </div>
+            </div>
+        </EditForm>
+    }
+
+    <table class="table-auto w-full border-collapse border border-gray-300 mt-4">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="border px-4 py-2">@localizer["Name"]</th>
+                <th class="border px-4 py-2">@localizer["Manager"]</th>
+                @if (userRole != "Employee")
+                {
+                    <th class="border px-4 py-2">@localizer["Actions"]</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @if (departments.Count == 0)
+            {
+                <tr>
+                    <td colspan="3" class="border px-4 py-2 text-center">@localizer["NoDepartments"]</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var dept in departments)
+                {
+                    <tr class="hover:bg-gray-100">
+                        <td class="border px-4 py-2">@dept.Name</td>
+                        <td class="border px-4 py-2">@dept.Manager</td>
+                        @if (userRole != "Employee")
+                        {
+                            <td class="border px-4 py-2">
+                                <button class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 mr-2" @onclick="() => Edit(dept)">
+                                    @localizer["Edit"]
+                                </button>
+                                <button class="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700" @onclick="() => Delete(dept.Id)">
+                                    @localizer["Delete"]
+                                </button>
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<DeptResponse> departments = new();
+    private DeptModel deptModel = new();
+    private bool loading = true;
+    private string? userRole;
+    private bool isSubmitting = false;
+    private string? error;
+    private bool editMode = false;
+    private int editId = 0;
+
+    private EditContext editContext;
+    private FluentValidationValidator fluentValidator;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var savedCulture = await JS.InvokeAsync<string>("localStorage.getItem", "culture") ?? "en";
+        var culture = new CultureInfo(savedCulture);
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+        userRole = await JS.InvokeAsync<string>("localStorage.getItem", "role") ?? "Employee";
+
+        deptModel = new DeptModel();
+        editContext = new EditContext(deptModel);
+
+        await LoadDepts();
+    }
+
+    private CreateDeptValidator CreateValidator() => new CreateDeptValidator(localizer);
+    private UpdateDeptValidator UpdateValidator() => new UpdateDeptValidator(localizer);
+
+    private async Task LoadDepts()
+    {
+        loading = true;
+        error = null;
+        try
+        {
+            var response = await DeptClient.GetAllDeptsAsync(new Shared.Proto.Empty());
+            departments = response.Depts.ToList();
+        }
+        catch (Exception ex)
+        {
+            error = $"{localizer["LoadError"]}: {ex.Message}";
+            departments = new();
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+
+    private async Task Save()
+    {
+        isSubmitting = true;
+        error = null;
+
+        if (!editContext.Validate())
+        {
+            isSubmitting = false;
+            return;
+        }
+
+        try
+        {
+            if (editMode)
+            {
+                await DeptClient.UpdateDeptAsync(new UpdateDeptRequest
+                {
+                    Id = editId,
+                    Name = deptModel.Name,
+                    Manager = deptModel.Manager
+                });
+            }
+            else
+            {
+                await DeptClient.CreateDeptAsync(new CreateDeptRequest
+                {
+                    Name = deptModel.Name,
+                    Manager = deptModel.Manager
+                });
+            }
+
+            await LoadDepts();
+            CancelEdit();
+        }
+        catch (Grpc.Core.RpcException ex) when (ex.StatusCode == Grpc.Core.StatusCode.InvalidArgument)
+        {
+            var messages = ex.Status.Detail.Split(';').Select(m => $"<li>{m.Trim()}</li>");
+            error = $"<ul>{string.Join("", messages)}</ul>";
+        }
+        catch (Exception ex)
+        {
+            error = $"{localizer["SaveError"]}: {ex.Message}";
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+
+    private void Edit(DeptResponse dept)
+    {
+        deptModel = new DeptModel { Name = dept.Name, Manager = dept.Manager };
+        editId = dept.Id;
+        editMode = true;
+        editContext = new EditContext(deptModel);
+    }
+
+    private void CancelEdit()
+    {
+        deptModel = new DeptModel();
+        editId = 0;
+        editMode = false;
+        editContext = new EditContext(deptModel);
+    }
+
+    private async Task Delete(int id)
+    {
+        try
+        {
+            await DeptClient.DeleteDeptAsync(new ByIdRequest { Id = id });
+            await LoadDepts();
+        }
+        catch (Grpc.Core.RpcException ex) when (ex.StatusCode == Grpc.Core.StatusCode.InvalidArgument)
+        {
+            var messages = ex.Status.Detail.Split(';').Select(m => $"<li>{m.Trim()}</li>");
+            error = $"<ul>{string.Join("", messages)}</ul>";
+        }
+        catch (Exception ex)
+        {
+            error = $"{localizer["DeleteError"]}: {ex.Message}";
+        }
+    }
+}

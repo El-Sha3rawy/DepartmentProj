@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:886d5e15f1c63f4cc1caec7ff58936690cc18dd69931479d26471f7575854ec2
-size 332
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

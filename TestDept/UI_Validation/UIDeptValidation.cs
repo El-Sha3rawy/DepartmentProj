@@ -1,3 +1,52 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:36794cace3da2f3ce363321fd861dcf8272864ba0f89a2894ac4f269962e7bf5
-size 1857
+﻿using FluentValidation;
+using Microsoft.Extensions.Localization;
+using Shared.Proto;
+using TestDept.SharedResources;
+
+namespace TestDept.UI_Validation
+{
+
+
+    public class DeptModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Manager { get; set; } = string.Empty;
+    }
+    public class CreateDeptValidator : AbstractValidator<DeptModel>
+        {
+
+            
+        public CreateDeptValidator(IStringLocalizer<SharedResource> localizer)
+            {
+                RuleFor(x => x.Name).NotEmpty().
+                    WithMessage(localizer["RequiredField"]).
+                    MinimumLength(3).WithMessage(localizer["MinLength"]).
+                    Matches("^[a-zA-Z0-9 ]+$").WithMessage(localizer["OnlyLettersNumbers"]);
+
+                RuleFor(x => x.Manager).NotEmpty().
+                    WithMessage(localizer["RequiredField"]).
+                    MinimumLength(3).WithMessage(localizer["MinLength"]).
+                    Matches("^[a-zA-Z ]+$").WithMessage(localizer["OnlyLetters"]);
+
+            }
+        }
+
+    public class UpdateDeptValidator : AbstractValidator<DeptModel>
+    {
+        public UpdateDeptValidator(IStringLocalizer<SharedResource> localizer)
+        {
+            RuleFor(x => x.Name).NotEmpty().
+               WithMessage(localizer["RequiredField"]).
+               MinimumLength(3).WithMessage(localizer["MinLength"]).
+               Matches("^[a-zA-Z0-9 ]+$").WithMessage(localizer["OnlyLettersNumbers"]);
+
+            RuleFor(x => x.Manager).NotEmpty().
+                WithMessage(localizer["RequiredField"]).
+                MinimumLength(3).WithMessage(localizer["MinLength"]).
+                Matches("^[a-zA-Z ]+$").WithMessage(localizer["OnlyLetters"]);
+        }
+
+    }
+
+}

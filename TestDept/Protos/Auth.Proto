@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dd493c65a7431e9d2f0d78121bea50496b6294d238a6747c2e9baaebf388ae2a
-size 574
+﻿syntax = "proto3";
+option csharp_namespace = "Auth.Proto";
+
+service AuthService {
+	rpc Login (LoginRequest) returns (LoginResponse);
+	rpc ValidationToken (ValidationTokenRequest) returns (ValidationTokenResponse);
+
+}
+
+message LoginRequest {
+	string Email = 1;
+	string Password = 2;
+}
+
+message LoginResponse {
+	string Token = 1; 
+	string UserId = 2; 
+	string Message = 3;
+	string Role = 4;
+	bool Success = 5;
+}
+
+message ValidationTokenRequest {
+	string token = 1;
+}
+
+message ValidationTokenResponse {
+	bool IsValid = 1; 
+	string UserId = 2; 
+}
