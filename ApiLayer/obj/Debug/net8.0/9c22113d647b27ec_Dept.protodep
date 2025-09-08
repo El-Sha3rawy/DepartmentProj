@@ -1,3 +1,3 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3d31b24384803c0873b2772c60fa0f62e3a4c1a52e1f93707f796b5d646ed1a1
-size 195
+obj\Debug\net8.0/Dept.cs \
+obj\Debug\net8.0/DeptGrpc.cs: C:/Users/Mohamed/.nuget/packages/grpc.tools/2.71.0/build/native/include/google/protobuf/timestamp.proto\
+ ../SharedLayer/Protos/Dept.proto
