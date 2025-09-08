@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:74ac2614b5077dabafb2cd0dd69ffd0c0065afa364ac74476e16b864666ad077
-size 683
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Shared
+build_property.ProjectDir = C:\Users\Mohamed\Desktop\DeptProj\SharedLayer\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 

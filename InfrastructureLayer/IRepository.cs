@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9ece75d3dd79bd2691237deb7cffc7bc47f430d2b0c128206e9738eabae1d6a0
-size 546
+﻿using DomainLayer;
+using Shared;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InfrastructureLayer
+{
+    public interface IRepository
+    {
+        Task<Department> GetById(int id);
+        Task <bool> GetByName(string name);
+        Task<IEnumerable<Department>> GetAll();
+        Task<Department> Create(Department department);
+        Task <bool> Update (int id , DepartmentDto departmentDto);
+        Task <bool> Delete (int id);
+    }
+}

@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3254e0ede97e60d9301d8bc996319e58de0f94e88b543f14a0c3fccc14ccc60c
-size 2396
+C:\Users\Mohamed\source\repos\Domain\bin\Debug\net8.0\DomainLayer.deps.json
+C:\Users\Mohamed\source\repos\Domain\bin\Debug\net8.0\DomainLayer.runtimeconfig.json
+C:\Users\Mohamed\source\repos\Domain\bin\Debug\net8.0\DomainLayer.dll
+C:\Users\Mohamed\source\repos\Domain\bin\Debug\net8.0\DomainLayer.pdb
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.csproj.AssemblyReference.cache
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.AssemblyInfoInputs.cache
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.AssemblyInfo.cs
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.csproj.CoreCompileInputs.cache
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.dll
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\refint\DomainLayer.dll
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.pdb
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\DomainLayer.genruntimeconfig.cache
+C:\Users\Mohamed\source\repos\Domain\obj\Debug\net8.0\ref\DomainLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\Domain\bin\Debug\net8.0\DomainLayer.deps.json
+C:\Users\Mohamed\Desktop\DeptProj\Domain\bin\Debug\net8.0\DomainLayer.runtimeconfig.json
+C:\Users\Mohamed\Desktop\DeptProj\Domain\bin\Debug\net8.0\DomainLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\Domain\bin\Debug\net8.0\DomainLayer.pdb
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.csproj.AssemblyReference.cache
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.AssemblyInfoInputs.cache
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.AssemblyInfo.cs
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.csproj.CoreCompileInputs.cache
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\refint\DomainLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.pdb
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\DomainLayer.genruntimeconfig.cache
+C:\Users\Mohamed\Desktop\DeptProj\Domain\obj\Debug\net8.0\ref\DomainLayer.dll

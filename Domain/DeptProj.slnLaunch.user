@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:adc5150d0ea4d37d810fe92a449e16addd2a12cdf74a561c9c7e7dee3bfd9795
-size 325
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "..\\TestDept\\TestDept.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "..\\ApiLayer\\ApiLayer.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      }
+    ]
+  }
+]

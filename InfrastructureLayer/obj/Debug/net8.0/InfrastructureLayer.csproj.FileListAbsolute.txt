@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:860475bc9b9a6f3e8d9d062d355b170354d41e868008fbafc76951b4e1c6438f
-size 3844
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.deps.json
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.runtimeconfig.json
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.dll
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.pdb
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\DomainLayer.dll
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\Shared.dll
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\DomainLayer.pdb
+C:\Users\Mohamed\source\repos\InfrastructureLayer\bin\Debug\net8.0\Shared.pdb
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.csproj.AssemblyReference.cache
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.AssemblyInfoInputs.cache
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.AssemblyInfo.cs
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.csproj.CoreCompileInputs.cache
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\Infrastr.B5BC0072.Up2Date
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.dll
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\refint\InfrastructureLayer.dll
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.pdb
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.genruntimeconfig.cache
+C:\Users\Mohamed\source\repos\InfrastructureLayer\obj\Debug\net8.0\ref\InfrastructureLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.deps.json
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.runtimeconfig.json
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\InfrastructureLayer.pdb
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\DomainLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\Shared.dll
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\DomainLayer.pdb
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\bin\Debug\net8.0\Shared.pdb
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.csproj.AssemblyReference.cache
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.AssemblyInfoInputs.cache
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.AssemblyInfo.cs
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.csproj.CoreCompileInputs.cache
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\Infrastr.B5BC0072.Up2Date
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\refint\InfrastructureLayer.dll
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.pdb
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.genruntimeconfig.cache
+C:\Users\Mohamed\Desktop\DeptProj\InfrastructureLayer\obj\Debug\net8.0\ref\InfrastructureLayer.dll
