@@ -1,6 +1,0 @@
-C:\Users\Mohamed\source\repos\TestDept\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\Mohamed\source\repos\TestDept\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\Mohamed\source\repos\TestDept\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\Mohamed\source\repos\TestDept\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\Mohamed\source\repos\TestDept\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\Mohamed\source\repos\TestDept\obj\Debug\net8.0\staticwebassets.build.json

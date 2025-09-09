@@ -1,3 +1,0 @@
-obj\Debug\net8.0/Dept.cs \
-obj\Debug\net8.0/DeptGrpc.cs: C:/Users/Mohamed/.nuget/packages/grpc.tools/2.71.0/build/native/include/google/protobuf/timestamp.proto\
- ../SharedLayer/Protos/Dept.proto
