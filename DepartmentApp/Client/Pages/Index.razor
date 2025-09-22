@@ -1,0 +1,99 @@
+﻿@page "/"
+@using Auth.Proto
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@inject AuthService.AuthServiceClient AuthClient
+
+<PageTitle>Login</PageTitle>
+
+<h2 class="text-2xl font-bold mb-4">Login</h2>
+
+<div class="flex flex-col gap-4 w-64">
+
+    <input type="email" @bind="email" placeholder="Email"
+           class="border border-gray-300 rounded-lg p-2" />
+
+    <input type="password" @bind="password" placeholder="Password"
+           class="border border-gray-300 rounded-lg p-2" />
+
+    <select @bind="selectedCulture" class="border border-gray-300 rounded-lg p-2">
+        <option value="en-US">English</option>
+        <option value="ar-EG">العربية</option>
+    </select>
+
+    <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+            @onclick="Login" disabled="@isSubmitting">
+        Login
+    </button>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="text-red-600">@errorMessage</div>
+    }
+</div>
+
+@code {
+    private string email = "";
+    private string password = "";
+    private string selectedCulture = "en-US";
+    private string? errorMessage;
+    private bool isSubmitting = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var savedCulture = await JS.InvokeAsync<string>("localStorage.getItem", "culture");
+        if (!string.IsNullOrEmpty(savedCulture))
+        {
+            selectedCulture = savedCulture;
+        }
+    }
+
+    private async Task Login()
+    {
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
+            errorMessage = "Please enter email and password";
+            return;
+        }
+
+        isSubmitting = true;
+        errorMessage = null;
+
+        try
+        {
+            var response = await AuthClient.LoginAsync(new LoginRequest
+            {
+                Email = email,
+                Password = password
+            });
+
+            if (response.Success)
+            {
+                await JS.InvokeVoidAsync("localStorage.setItem", "token", response.Token);
+                await JS.InvokeVoidAsync("localStorage.setItem", "userId", response.UserId);
+                await JS.InvokeVoidAsync("localStorage.setItem", "role", response.Role ?? "Employee");
+
+                await JS.InvokeVoidAsync("localStorage.setItem", "culture", selectedCulture);
+
+                var cultureInfo = new System.Globalization.CultureInfo(selectedCulture);
+                System.Globalization.CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+                System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+                Navigation.NavigateTo("/Department", forceLoad: true);
+
+            }
+            else
+            {
+                errorMessage = response.Message ?? "Login failed";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Login error: {ex.Message}";
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+﻿syntax ="proto3";
+option csharp_namespace = "DepartmentGrpc.Proto";
+import "google/protobuf/timestamp.proto";
+
+
+service DepartmentService {
+	rpc CreateDepartment (CreateRequest) returns (CreateResponse);
+	rpc UpdateDepartment (UpdateRequest) returns (UpdateResponse);
+	rpc DeleteDepartment (ByIdRequest) returns (DeleteResponse);
+	rpc GetDepartmentById (ByIdRequest) returns (DepartmentResponse); 
+	rpc GetAllDepartments (Empty) returns (DepartmentsResponse);
+}
+
+message CreateRequest{
+	string Name = 1;
+	string Manager = 2;
+}
+
+message CreateResponse {
+	bool Success = 1 ;
+	
+}
+
+message UpdateRequest {
+	int32 Id = 1 ; 
+	string Name = 2 ; 
+	string Manager = 3 ; 
+}
+
+message UpdateResponse {
+	bool Success = 1 ;
+}
+
+message ByIdRequest {
+	int32 Id = 1 ;
+}
+
+message DeleteResponse {
+	bool Success = 1 ;
+}
+
+message DepartmentResponse {
+	int32 Id = 1 ;
+	string Name = 2 ; 
+	string Manager = 3 ;
+	string CreatedDate = 4;
+	optional google.protobuf.Timestamp LastUpdate = 5;
+}
+
+message Empty {}
+
+message DepartmentsResponse {
+	repeated DepartmentResponse Depts = 1 ; 
+}
