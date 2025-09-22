@@ -39,6 +39,8 @@ else
             <tr class="bg-gray-200">
                 <th class="border px-4 py-2">@localizer["Name"]</th>
                 <th class="border px-4 py-2">@localizer["Manager"]</th>
+                <th class="border px-4 py-2">@localizer["CreatedAt"]</th>
+                <th class="border px-4 py-2">@localizer["LastUpdate"]</th>
                 @if (userRole != "Employee")
                 {
                     <th class="border px-4 py-2">@localizer["Actions"]</th>
@@ -59,6 +61,12 @@ else
                     <tr class="hover:bg-gray-100">
                         <td class="border px-4 py-2">@dept.Name</td>
                         <td class="border px-4 py-2">@dept.Manager</td>
+                        <td class="border px-4 py-2">
+                            @dept.CreatedDate
+                        </td>
+                        <td class="border px-4 py-2">
+                            @dept.LastUpdate?.ToDateTime().ToString()
+                        </td>
                         @if (userRole != "Employee")
                         {
                             <td class="border px-4 py-2">
